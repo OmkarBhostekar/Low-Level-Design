@@ -9,16 +9,18 @@ public class Main {
         // create observable object
         AppleStockObservableImpl appleStockObservable = new AppleStockObservableImpl();
         // create observers
-        EmailNotificationObserver emailNotificationObserver = new EmailNotificationObserver(appleStockObservable);
-        SmsNotificationObserver smsNotificationObserver = new SmsNotificationObserver(appleStockObservable);
+        EmailNotificationObserver emailNotificationObserver1 = new EmailNotificationObserver("omkar@gmail.com",appleStockObservable);
+        EmailNotificationObserver emailNotificationObserver2 = new EmailNotificationObserver("om@gmail.com",appleStockObservable);
+        SmsNotificationObserver smsNotificationObserver = new SmsNotificationObserver("9812345670", appleStockObservable);
 
         // subscribe to observable
-        appleStockObservable.add(emailNotificationObserver);
+        appleStockObservable.add(emailNotificationObserver1);
+        appleStockObservable.add(emailNotificationObserver2);
         appleStockObservable.add(smsNotificationObserver);
         appleStockObservable.setStockPrice(50);
 
         // unsubscribe
-        appleStockObservable.remove(emailNotificationObserver);
+        appleStockObservable.remove(emailNotificationObserver1);
         appleStockObservable.setStockPrice(100);
 
         appleStockObservable.remove(smsNotificationObserver);
